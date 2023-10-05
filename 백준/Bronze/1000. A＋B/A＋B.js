@@ -1,5 +1,5 @@
 const fs = require("fs");
-const filePath = process.platform === "window" ? "./example.txt" : "./dev/stdin" ;
+const filePath = process.platform === "win32" ? "./example.txt" : "./dev/stdin" ;
 const input = fs.readFileSync(filePath).toString().trim().split(" ");
 
 const solution = (a, b) => {
