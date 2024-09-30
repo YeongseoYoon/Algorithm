@@ -8,4 +8,5 @@ function solution(ineq, eq, n, m) {
     } else if (ineq === "<" && eq === "!") {
         return n < m ? 1 : 0;
     }
+    return 0;
 }
