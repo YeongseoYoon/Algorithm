@@ -1,18 +1,20 @@
 function solution(code) {
+    let ret = [];
     let mode = 0;
     
-    const ret = Array.from(code).reduce((acc, char, idx) => {
-        if (char === '1') {
-            mode = 1 - mode; 
-            return acc;
+    for (let idx = 0; idx < code.length; idx++) {
+        if (code[idx] === "1") {
+            mode = 1 - mode;
+        } else {
+            if (mode === 0 && idx % 2 === 0) {
+                ret.push(code[idx]);
+            }
+            else if (mode === 1 && idx % 2 === 1) {
+                ret.push(code[idx]);
+            }
         }
-        
-        if ((mode === 0 && idx % 2 === 0) || (mode === 1 && idx % 2 !== 0)) {
-            return acc + char;
-        }
-        
-        return acc;
-    }, '');
-
-    return ret === '' ? 'EMPTY' : ret;
+    }
+    
+  
+    return ret.length > 0 ? ret.join('') : "EMPTY";
 }
