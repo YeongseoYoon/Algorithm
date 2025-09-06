@@ -1,18 +1,19 @@
 function solution(num) {
-    if (num === 1) return 0;
-    
-    let count = 0; 
-    let currentNum = num;
-    
-    while (count < 500 && currentNum !== 1) {
-        if (currentNum % 2 === 0) {
-            currentNum = currentNum / 2;
-        }
-        else {
-            currentNum = (currentNum * 3) + 1;
-        }
-        count++;
+    return collatzRecursive(num, 0);
+}
+
+const collatzRecursive = (num, count) => {
+    if (num === 1) {
+        return count;
     }
     
-    return currentNum === 1 ? count : -1;
+    if (count >= 500) {
+        return -1;
+    }
+    
+    if (num % 2 === 0) {
+        return collatzRecursive(num / 2, count + 1);
+    } else {
+        return collatzRecursive(num * 3 + 1, count + 1);
+    }
 }
